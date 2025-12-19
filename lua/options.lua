@@ -19,19 +19,9 @@ opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
 
---===================================== WSL clipboard sharing 
-vim.g.clipboard = {
-  name = 'WslClipboard',
-  copy = {
-    ['+'] = 'clip.exe',
-    ['*'] = 'clip.exe',
-  },
-  paste = {
-    -- powershell is too slow, im using https://github.com/equalsraf/win32yank/tree/master 
-    ['+'] = 'win32yank.exe -o --lf',
-    ['*'] = 'win32yank.exe -o --lf',
-  },
-  cache_enabled = 0,
-}
+--===================================== [[ Clipboard ]]
 
-
+-- Sync clipboard between OS and Neovim.
+-- On native OS, this allows you to Ctrl+V / Ctrl+C outside neovim
+-- and use 'p' / 'y' inside neovim seamlessly.
+opt.clipboard = "unnamedplus"
