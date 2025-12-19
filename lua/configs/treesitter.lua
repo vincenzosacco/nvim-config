@@ -13,6 +13,7 @@ local opts = {
     "typescript",
     "yaml",
   },
+
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
@@ -40,5 +41,13 @@ local opts = {
     },
   },
 }
+
+--================================ WINDOWS
+if vim.fn.has "win32" == 1 then
+  opts.ensure_installed.extend {
+    "powershell",
+    "dart", -- i use flutter on windows
+  }
+end
 
 return opts
