@@ -22,7 +22,6 @@ local function define_asp_syntax()
 
   -- 1. COMMENTS (Must be first)
   match("ASPComment", [[%.*]]) -- Standard % comment
-  match("ASPComment", [[//.*]]) -- C-style comment
 
   -- 2. AGGREGATES & DIRECTIVES (#keyword)
   match("ASPKeyword", [[#[a-z]\+]])
@@ -59,6 +58,8 @@ end
 M.apply_syntax = function()
   set_asp_highlights()
   define_asp_syntax()
+  -- This tells Neovim: "When commenting, put a '%' followed by a space (%s is the code)"
+  vim.bo.commentstring = "% %s"
   vim.cmd "let b:current_syntax = 'azsp'"
 end
 
