@@ -5,9 +5,9 @@
 - So you can delete the .git from this repo ( when you clone it locally ) or fork it :)
 
 # Branch 
-merged (default)-> all configs for all OS merged using :'if nvim.fn.has("win32") ....'  
-linux
-windows
+- merged (default)-> all configs for all OS merged using :'if nvim.fn.has("win32") ....'  
+- linux
+- windows
 
 Difference between braches depends only on my personal workflows and setups, nothing 'technical'.
 
