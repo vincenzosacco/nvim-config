@@ -8,10 +8,10 @@ local M = {}
 M.base46 = {
   theme = "seoul256_dark",
   -- static theme override ( works only on startup)
-  hl_override  = require "custom.theme".get_highlights()
+  hl_override = require("custom.theme").get_highlights(),
 }
 
--- Load Custom config 
+-- Load Custom config
 local customInit = require "custom.init"
 customInit.setup() -- this load also the 'switch theme event'
 
