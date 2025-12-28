@@ -69,7 +69,7 @@ M.get_highlights = function()
     ["Operator"] = { fg = c.green },
     ["@keyword"] = { fg = c.green },
     ["@keyword.return"] = { fg = c.green },
-
+    ["Keyword"] = { fg = c.green },
     -- DARK GREEN
 
     -- Text Color
