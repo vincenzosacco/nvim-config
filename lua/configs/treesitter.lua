@@ -44,10 +44,10 @@ local opts = {
 
 --================================ WINDOWS
 if vim.fn.has "win32" == 1 then
-  opts.ensure_installed.extend {
+  vim.list_extend(opts.ensure_installed, {
     "powershell",
-    "dart", -- i use flutter on windows
-  }
+    "dart",
+  })
 end
 
 return opts
