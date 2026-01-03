@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "penumbra_dark",
+  theme = "seoul256_dark",
   -- static theme override ( works only on startup)
   hl_override = require("custom.theme").get_highlights(),
 }
