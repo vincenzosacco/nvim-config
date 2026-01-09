@@ -32,4 +32,21 @@ return {
       vim.api.nvim_set_keymap("i", "<S-Right>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
     end,
   },
+
+  ---- Markdown Preview ----
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    -- CHANGE THIS LINE BELOW:
+    -- We add 'git restore .' to undo the changes to yarn.lock after installation
+    build = "cd app && npm install && git restore .",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+      -- Don't close the preview when switching buffers
+      vim.g.mkdp_auto_close = 0
+      -- Reuse the same browser tab for all markdown files
+      vim.g.mkdp_combine_preview = 1
+    end,
+  },
 }
