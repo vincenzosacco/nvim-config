@@ -1,2 +1,6 @@
 secrets.lua
 
+# Technically it is an error but there are too much merge conflicts
+lazy-lock.json 
+# Also here there too much merge conflicts due theme changes 
+lua/chadrc.lua 
