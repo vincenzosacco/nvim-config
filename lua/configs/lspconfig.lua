@@ -20,7 +20,7 @@ local servers = {
 -- })
 
 for _, lsp in ipairs(servers) do
-  -- require lspconfig is deprecated for this version (0.11.5), use vim.lsp.config  
+  -- require lspconfig is deprecated for this version (0.11.5), use vim.lsp.config
   vim.lsp.config(lsp, {
     -- Apply NvChad's shared logic
     on_attach = nvchad_cfg.on_attach,
@@ -28,6 +28,19 @@ for _, lsp in ipairs(servers) do
     capabilities = nvchad_cfg.capabilities,
   })
 end
+
+-- Diagnostic configuration (e.g. lsp warnings, errors,  signs)
+vim.diagnostic.config {
+
+  -- require neovim >= 0.11.0 for virtual_lines
+  virtual_text = false, -- Turn off the text that gets cut off
+  virtual_lines = { current_line = true }, -- Show full message under the cursor line
+
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
+}
 
 --==================================== WINDOWS ====================================
 if vim.fn.has "win32" == 1 then

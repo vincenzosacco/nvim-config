@@ -17,11 +17,28 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
     config = function()
       require "configs.treesitter"
     end,
   },
 
+  ---- GIT ----
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    -- keys are set in mappings.lua
+    config = function()
+      require "configs.lazygit"
+    end,
+  },
   ---- AI MODEL ----
   {
     "github/copilot.vim",
