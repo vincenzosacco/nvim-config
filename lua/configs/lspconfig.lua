@@ -1,32 +1,41 @@
 local nvchad_cfg = require "nvchad.configs.lspconfig"
-local lspconfig = require "lspconfig"
 
 -- nvchad_cfg.defaults() // dont know if needed
 
--- 1. Standard servers managed by Mason
+-- 1. Define exactly what each server needs (cmd and filetypes)
 local servers = {
-  "html",
-  "cssls",
-  "clangd",
-  "pyright",
+  html = {
+    cmd = { "vscode-html-language-server", "--stdio" },
+    filetypes = { "html" },
+  },
+  cssls = {
+    cmd = { "vscode-css-language-server", "--stdio" },
+    filetypes = { "css", "scss", "less" },
+  },
+  pyright = {
+    cmd = { "pyright-langserver", "--stdio" },
+    filetypes = { "python" },
+  },
+  clangd = {
+    cmd = { "clangd", "--background-index", "--clang-tidy", "--fallback-style=llvm" },
+    filetypes = { "c", "cpp", "objc", "objcpp", "h", "hpp" },
+    -- For C++, it's highly recommended to tell it how to find the root folder
+    root_dir = vim.fs.root(0, { "compile_commands.json", "compile_flags.txt", ".git" }),
+  },
 }
 
--- Use the new native enable function for standard servers
--- This automatically applies NvChad defaults if you pass them as the second argument
--- vim.lsp.enable(servers, {
---   on_attach = nvchad_cfg.on_attach,
---   on_init = nvchad_cfg.on_init,
---   capabilities = nvchad_cfg.capabilities,
--- })
+-- 2. Loop through the table to configure AND enable them natively
+for lsp_name, config in pairs(servers) do
+  -- Inject NvChad's shared logic into each specific config
+  config.on_attach = nvchad_cfg.on_attach
+  config.on_init = nvchad_cfg.on_init
+  config.capabilities = nvchad_cfg.capabilities
 
-for _, lsp in ipairs(servers) do
-  -- require lspconfig is deprecated for this version (0.11.5), use vim.lsp.config
-  vim.lsp.config(lsp, {
-    -- Apply NvChad's shared logic
-    on_attach = nvchad_cfg.on_attach,
-    on_init = nvchad_cfg.on_init,
-    capabilities = nvchad_cfg.capabilities,
-  })
+  -- Step A: Save the configuration to Neovim
+  vim.lsp.config(lsp_name, config)
+
+  -- Step B: Actually turn the server ON
+  vim.lsp.enable(lsp_name)
 end
 
 -- Diagnostic configuration (e.g. lsp warnings, errors,  signs)
