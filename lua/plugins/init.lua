@@ -66,4 +66,10 @@ return {
       vim.g.mkdp_combine_preview = 1
     end,
   },
+
+  ---- Transparent background toggle ----
+  {
+    "xiyaowong/transparent.nvim",
+    lazy = false, -- Carica subito all'avvio
+  },
 }
