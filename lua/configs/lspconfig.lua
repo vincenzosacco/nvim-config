@@ -17,7 +17,10 @@ local servers = {
     filetypes = { "python" },
   },
   clangd = {
-    cmd = { "clangd", "--background-index", "--clang-tidy", "--fallback-style=llvm" },
+    cmd = { "clangd", "--background-index", "--clang-tidy", 
+    "--fallback-style=llvm", 
+    "--query-driver=C:\\msys64\\ucrt64\\bin\\g++.exe" },
+
     filetypes = { "c", "cpp", "objc", "objcpp", "h", "hpp" },
     -- For C++, it's highly recommended to tell it how to find the root folder
     root_dir = vim.fs.root(0, { "compile_commands.json", "compile_flags.txt", ".git" }),
