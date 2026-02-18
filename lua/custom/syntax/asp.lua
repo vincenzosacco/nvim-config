@@ -59,6 +59,8 @@ end
 M.apply_syntax = function()
   set_asp_highlights()
   define_asp_syntax()
+
+  vim.bo.commentstring = "% %s"
   vim.cmd "let b:current_syntax = 'azsp'"
 end
 
