@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "everforest_light",
+  theme = "carbonfox",
   -- static theme override ( works only on startup)
   hl_override = require("custom.theme").get_highlights(),
 }
