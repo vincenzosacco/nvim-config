@@ -6,7 +6,8 @@
 local M = {}
 
 M.base46 = {
-  theme = "carbonfox",
+  theme = "github_dark",
+  transparency = true,
   -- static theme override ( works only on startup)
   hl_override = require("custom.theme").get_highlights(),
 }
