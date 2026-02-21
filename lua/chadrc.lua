@@ -12,18 +12,15 @@ M.base46 = {
   hl_override = require("custom.theme").get_highlights(),
 }
 
-
-
 -- Load Custom config
 local customInit = require "custom.init"
 customInit.setup() -- this load also the 'switch theme event'
 
--- M.nvdash = { load_on_startup = true }
+M.nvdash = { load_on_startup = true }
 -- M.ui = {
 --       tabufline = {
 --          lazyload = false
 --      }
 -- }
-
 
 return M
