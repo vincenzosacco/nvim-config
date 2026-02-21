@@ -12,6 +12,8 @@ M.base46 = {
   hl_override = require("custom.theme").get_highlights(),
 }
 
+
+
 -- Load Custom config
 local customInit = require "custom.init"
 customInit.setup() -- this load also the 'switch theme event'
@@ -22,5 +24,6 @@ customInit.setup() -- this load also the 'switch theme event'
 --          lazyload = false
 --      }
 -- }
+
 
 return M
