@@ -11,9 +11,7 @@ setMap({ "n", "i", "v" }, "<C-a>", "gg0vG$")
 
 --Make
 if is_windows then
-  vim.opt.shellpipe = ">%s 2>&1"
-  -- Try Windows-specific Makefile first
-  vim.opt.makeprg = "mingw32-make" -- default mingw32-make search for "GNUmakefile", "makefile" or "Makefile"
+  vim.opt.makeprg = "mingw32-make" -- Win binary for make, ensure it's in your PATH 
 end
 
 -- 3. Map <leader>m to the native :make command
@@ -22,8 +20,8 @@ setMap("n", "m", ":make<cr>", { desc = "run makefile" })
 ---- Terminal mode
 
 -- ovveride nvcahd
-delMap("t", "<C-x>") --delete previus map ( conflict key, e.g. Nano editor when using git)
-setMap("t", "<ESC>", "<C-\\><C-N>")
+delMap("t", "<C-x>") --delete previus map for exiting( conflict key, e.g. Nano editor when using git)
+setMap("t", "<ESC><ESC>", "<C-\\><C-N>") -- should have no conflict
 
 ---- LazyGit
 setMap("n", "<leader>gg", "<cmd> LazyGit <cr>", { desc = "Open LazyGit" })
