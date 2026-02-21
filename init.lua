@@ -38,6 +38,20 @@ end)
 
 --=============================== WINDOWS SPECIFIC CONFIGS ===============================--
 if vim.fn.has "win32" == 1 then
-  vim.opt.shell = "powershell.exe"
-  vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command"
+  -- Prefer modern PowerShell (pwsh) if available, fallback to Windows PowerShell
+  local shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell"
+  vim.opt.shell = shell
+
+  -- Force UTF-8 encoding for the session
+  vim.opt.shellcmdflag =
+    "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+
+  -- Use UTF8 to prevent data loss.
+  -- MUST include `exit $LastExitCode` so Neovim catches command failures (e.g., for `:make`).
+  vim.opt.shellredir = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+  vim.opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+
+  -- Required for PowerShell to work smoothly with Neovim
+  vim.opt.shellquote = ""
+  vim.opt.shellxquote = ""
 end
