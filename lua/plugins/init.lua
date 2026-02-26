@@ -21,7 +21,27 @@ return {
       require "configs.treesitter"
     end,
   },
-
+  ---- DAP (Debug Adapter Protocol) for debugging
+  {
+    "mfussenegger/nvim-dap",
+    config = function()
+      -- Optional: Config here
+    end,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    config = function()
+      require("dapui").setup()
+    end,
+  },
+  {
+    "mfussenegger/nvim-dap-python",
+    ft = "python",
+    config = function()
+      require("configs.nvim-dap-python").setup()
+    end,
+  },
   ---- GIT ----
   {
     "kdheepak/lazygit.nvim",
@@ -55,10 +75,4 @@ return {
       vim.g.mkdp_combine_preview = 1
     end,
   },
-
-  ---- Transparent background toggle ----
-  {
-    "xiyaowong/transparent.nvim",
-    lazy = false,
-  },
-}
+  }

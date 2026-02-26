@@ -11,7 +11,7 @@ setMap({ "n", "i", "v" }, "<C-a>", "gg0vG$")
 
 --Make
 if is_windows then
-  vim.opt.makeprg = "mingw32-make" -- Win binary for make, ensure it's in your PATH 
+  vim.opt.makeprg = "mingw32-make" -- Win binary for make, ensure it's in your PATH
 end
 
 -- 3. Map <leader>m to the native :make command
@@ -47,3 +47,11 @@ setMap("n", "<leader>oi", function()
     },
   }
 end, { desc = "Organize Imports" })
+
+---- Debugger
+
+setMap("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Add breakpoint at line" })
+setMap("n", "<leader>dr", "<cmd> DapContinue <CR>", { desc = "Run or continue debugger" })
+setMap("n", "<leader>du", function()
+  require("dapui").toggle()
+end, { desc = "Toggle Debugger UI" })
