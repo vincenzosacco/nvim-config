@@ -38,16 +38,6 @@ return {
       require "configs.lazygit"
     end,
   },
-  ---- AI MODEL ----
-  {
-    "github/copilot.vim",
-    lazy = false,
-    config = function()
-      -- Disable default <Tab> mapping if you want to map it manually
-      vim.g.copilot_no_tab_map = true
-      vim.api.nvim_set_keymap("i", "<S-Right>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-    end,
-  },
 
   ---- Markdown Preview ----
   {
