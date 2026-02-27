@@ -9,7 +9,14 @@ setMap("i", "jk", "<ESC>")
 setMap({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 setMap({ "n", "i", "v" }, "<C-a>", "gg0vG$")
 
---Make
+----UI
+
+-- Toggle transparency with <leader>tt
+setMap("n", "<leader>tt", function()
+  require("base46").toggle_transparency()
+end, { desc = "UI: Toggle transparency" })
+
+----Make
 if is_windows then
   vim.opt.makeprg = "mingw32-make" -- Win binary for make, ensure it's in your PATH
 end
