@@ -51,12 +51,14 @@ M.get_highlights = function()
     ["cBlock"] = { fg = c.cyan, bold = false },
 
     --======================= Python
-    ["pythonBuiltin"] = { fg = c.cyan, italic = true },
-    ["@function.builtin.python"] = { fg = c.cyan, italic = true },
+    ["pythonBuiltin"] = { fg = c.green, italic = true },
+    ["@function.builtin.python"] = { fg = c.green, italic = true },
+    ["@attribute"] = { fg = c.yellow, italic = true },
+    ["@module"] = { fg = c.cyan },
+    ["@type.python"] = { fg = c.text },
     --====================== Global
 
     -- GREEN
-    ["Include"] = { fg = c.dark_green, bold = true },
     ["Statement"] = { fg = c.green },
     ["Repeat"] = { fg = c.green },
     ["Type"] = { fg = c.green },
@@ -64,27 +66,32 @@ M.get_highlights = function()
     ["Conditional"] = { fg = c.green },
     ["Boolean"] = { fg = c.green },
     ["@keyword.conditional"] = { fg = c.green },
-    ["@keyword.function"] = { fg = c.green },
+    ["@constructor"] = { fg = c.green },
     ["@keyword.operator"] = { fg = c.green },
     ["Operator"] = { fg = c.green },
     ["@keyword"] = { fg = c.green },
     ["@keyword.return"] = { fg = c.green },
     ["Keyword"] = { fg = c.green },
+    ["@keyword.repeat"] = { fg = c.green },
+    ["@keyword.exception"] = { fg = c.green },
+    ["@keyword.function"] = { fg = c.green, bold = true },
+    ["@type.builtin"] = { fg = c.green, italic = true },
+    ["@function.builtin"] = { fg = c.green },
+    ["@constant.builtin"] = { fg = c.green, bold = true },
     -- DARK GREEN
-
+    ["Include"] = { fg = c.dark_green, bold = true },
     -- Text Color
     ["Function"] = { fg = c.text },
     ["@function"] = { fg = c.text },
     ["@function.call"] = { fg = c.text },
-    ["@function.method.call"] = { fg = c.text },
-    ["@function.builtin"] = { fg = c.text },
+    ["@function.method.call"] = { fg = c.text, italic = true },
     ["@variable"] = { fg = c.text },
     ["@variable.member"] = { fg = c.text },
     ["@constant"] = { fg = c.text },
     ["@variable.parameter"] = { fg = c.text },
     ["@property"] = { fg = c.text, italic = true },
     ["Special"] = { fg = c.text },
-
+    ["@punctuation.bracket"] = { fg = c.text },
     -- Cyan
     ["SpecialChar"] = { fg = c.cyan, bold = true },
     ["@character"] = { fg = c.cyan },
@@ -92,6 +99,7 @@ M.get_highlights = function()
     ["String"] = { fg = c.cyan },
     ["Number"] = { fg = c.cyan },
     ["@number"] = { fg = c.cyan },
+    ["@number.float"] = { fg = c.cyan },
     -- No color (Based on theme)
     ["Comment"] = { fg = c.comment, italic = true },
     ["@comment"] = { fg = c.comment, italic = true },

@@ -29,7 +29,33 @@ M.setup = function()
     dap_python.setup "python3"
   end
 
-  -- 3. UI AUTOMATION (Open/Close on debug)
+  -- 3. PYTHON MODULE DEBUG CONFIG
+  dap.configurations.python = {
+    {
+      type = "python",
+      request = "launch",
+      name = "Debug current file",
+      program = "${file}",
+      justMyCode = false,
+    },
+    {
+      type = "python",
+      request = "launch",
+      name = "Debug Python module",
+
+      module = function()
+        return vim.fn.input "Module name: "
+      end,
+
+      args = function()
+        return vim.split(vim.fn.input "Arguments: ", " ")
+      end,
+
+      justMyCode = false,
+    },
+  }
+
+  -- 4. UI AUTOMATION (Open/Close on debug)
   dap.listeners.before.attach.dapui_config = function()
     dapui.open()
   end
