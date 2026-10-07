@@ -6,8 +6,8 @@
 local M = {}
 
 M.base46 = {
-  theme = "github_dark",
-  transparency = true,
+  theme = "darcula-dark",
+  transparency = false,
   -- static theme override ( works only on startup)
   hl_override = require("custom.theme").get_highlights(),
 }
@@ -23,4 +23,18 @@ M.nvdash = { load_on_startup = true }
 --      }
 -- }
 
+--============== TERMINALS
+
+M.term = {
+  winopts = { winfixbuf = true }, -- Locks terminal buffer to window
+  sizes = { sp = 0.3, vsp = 0.2 }, -- Default sizes for splits
+  float = {
+    relative = "editor",
+    row = 0.1,
+    col = 0.045,
+    width = 0.9,
+    height = 0.8,
+    border = "single",
+  },
+}
 return M

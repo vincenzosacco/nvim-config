@@ -6,7 +6,7 @@ local is_windows = vim.fn.has "win32" == 1
 
 setMap("n", ";", ":", { desc = "CMD enter command mode" })
 setMap("i", "jk", "<ESC>")
-setMap({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+setMap({ "n", "i", "v" }, "<C-s><C-s>", "<cmd> w <cr>") -- double s to avoid conflicts
 setMap({ "n", "i", "v" }, "<C-a>", "gg0vG$")
 
 ----UI

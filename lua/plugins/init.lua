@@ -21,6 +21,13 @@ return {
       require "configs.treesitter"
     end,
   },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    -- This imports your config file and merges it safely into NvChad's layout
+    opts = require("configs.nvimtree").setup,
+  },
+
   ---- DAP (Debug Adapter Protocol) for debugging
   {
     "mfussenegger/nvim-dap",
@@ -75,4 +82,4 @@ return {
       vim.g.mkdp_combine_preview = 1
     end,
   },
-  }
+}
